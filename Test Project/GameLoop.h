@@ -1,3 +1,11 @@
+//////////////////////////////////////////////////////////////
+// File: GameLoop.h
+// Author: Ben Odom
+// Brief: A short and simple game loop object which will allow
+//		  a base layout for how you should organize your game
+//		  functions. 
+//////////////////////////////////////////////////////////////
+
 #ifndef _GAMELOOP_H_
 #define _GAMELOOP_H_
 

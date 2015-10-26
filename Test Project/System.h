@@ -1,3 +1,12 @@
+//////////////////////////////////////////////////////////////
+// File: System.h
+// Author: Ben Odom
+// Brief: Holds the necessary structs for 2D graphics. Uses
+//		  2D points, sizes/dimensions, velocity/angular 
+//		  velocity, and colors. Also hold some overloaded 
+//		  operators for adding points or sizes together.
+//////////////////////////////////////////////////////////////
+
 #ifndef _SYSTEM_H_
 #define _SYSTEM_H_
 

@@ -1,3 +1,13 @@
+//////////////////////////////////////////////////////////////
+// File: Window.h
+// Author: Ben Odom
+// Brief: This class contains all the necessary variables for
+//		  the OpenGL context and SDL Window. Multiple 
+//		  instances of this class will exist at any given
+//		  time, and each has functions that the 'Graphics'
+//		  namespace can use to handle it internally
+//////////////////////////////////////////////////////////////
+
 #ifndef _WINDOW_H_
 #define _WINDOW_H_
 

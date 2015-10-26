@@ -1,3 +1,12 @@
+//////////////////////////////////////////////////////////////
+// File: Window.h
+// Author: Ben Odom
+// Brief: This class contains all the necessary variables for
+//		  a viewport in OpenGL. It also includes some 
+//		  functionality for scrolling cameras, as well as
+//		  zoom and rotation for single instances of a camera.
+//////////////////////////////////////////////////////////////
+
 #ifndef _CAMERA_H_
 #define _CAMERA_H_
 
@@ -62,7 +71,6 @@ namespace Graphics
 	void Camera<T>::Resize(const System::Size2D<T>& ac_NewDimensions)
 	{
 		m_Dimensions = ac_NewDimensions;
-		//m_Resolution = ac_NewResolution;
 	}
 	template <typename T>
 	void Camera<T>::RePosition(const System::Point2D<T>& ac_NewScreenPos)
@@ -79,8 +87,7 @@ namespace Graphics
 	void Camera<T>::Update()
 	{
 		if (m_bIsScrolling)
-			m_WorldPos.X += 0.01;
-			//m_WorldPos += m_Velocity;
+			m_WorldPos += m_Velocity;
 	}
 
 	template <typename T>
