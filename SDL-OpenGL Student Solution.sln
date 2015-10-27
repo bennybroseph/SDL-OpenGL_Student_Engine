@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test Project", "Test Project\Test Project.vcxproj", "{1822AC74-4B92-4470-BDDB-33E995336ABA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL-OpenGL Student Library", "Graphics Library\Graphics Library.vcxproj", "{9BCDC24A-AC5F-4C9D-905F-F5EA0447DB66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -22,6 +24,14 @@ Global
 		{1822AC74-4B92-4470-BDDB-33E995336ABA}.Release|x64.Build.0 = Release|x64
 		{1822AC74-4B92-4470-BDDB-33E995336ABA}.Release|x86.ActiveCfg = Release|Win32
 		{1822AC74-4B92-4470-BDDB-33E995336ABA}.Release|x86.Build.0 = Release|Win32
+		{9BCDC24A-AC5F-4C9D-905F-F5EA0447DB66}.Debug|x64.ActiveCfg = Debug|x64
+		{9BCDC24A-AC5F-4C9D-905F-F5EA0447DB66}.Debug|x64.Build.0 = Debug|x64
+		{9BCDC24A-AC5F-4C9D-905F-F5EA0447DB66}.Debug|x86.ActiveCfg = Debug|Win32
+		{9BCDC24A-AC5F-4C9D-905F-F5EA0447DB66}.Debug|x86.Build.0 = Debug|Win32
+		{9BCDC24A-AC5F-4C9D-905F-F5EA0447DB66}.Release|x64.ActiveCfg = Release|x64
+		{9BCDC24A-AC5F-4C9D-905F-F5EA0447DB66}.Release|x64.Build.0 = Release|x64
+		{9BCDC24A-AC5F-4C9D-905F-F5EA0447DB66}.Release|x86.ActiveCfg = Release|Win32
+		{9BCDC24A-AC5F-4C9D-905F-F5EA0447DB66}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

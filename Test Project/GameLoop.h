@@ -16,7 +16,7 @@
 // The GameLoop class inherits every member variable and function from 'EventHandler'
 // Think of it like a car. All trucks are cars, but not all cars are trucks.
 // A van is also a car. Both truck and van inherit values from car, but they are 
-// both unique. GameLoop can use all the functions from 'EventHandler' but
+// both unique. The 'GameLoop' class can use all the functions from 'EventHandler' but
 // it also has its own which are defined below. See the header and source file
 // of EvenHandler if you're feeling brave and want to see what other user input
 // you can receive using this Engine

@@ -13,63 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Engine">
-      <UniqueIdentifier>{b32e86c3-91ec-45ca-a021-2333f5962176}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\System">
-      <UniqueIdentifier>{c9b915a3-88d0-4b11-ab92-b495292baecf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Graphics">
-      <UniqueIdentifier>{edecb8f5-da66-409c-a764-981237f779a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Graphics\Window">
-      <UniqueIdentifier>{ad450d6c-f5ec-4ac1-a32b-ccc36845eca1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Engine\Graphics\Camera">
-      <UniqueIdentifier>{9ed118ec-78d6-4f65-8b1b-fae272a9d07b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameLoop">
       <UniqueIdentifier>{037cdcb9-d057-4abc-80a0-0b90d8af4ec8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Engine\EventHandler">
-      <UniqueIdentifier>{468aa088-1703-4ab5-abef-fff5972b5edf}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h">
-      <Filter>Source Files\Engine\Graphics\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="System.h">
-      <Filter>Source Files\Engine\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics.h">
-      <Filter>Source Files\Engine\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Source Files\Engine\Graphics\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="GameLoop.h">
       <Filter>Source Files\GameLoop</Filter>
-    </ClInclude>
-    <ClInclude Include="EventHandler.h">
-      <Filter>Source Files\Engine\EventHandler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Source Files\Engine\Graphics\Window</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Source Files\Engine\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="GameLoop.cpp">
       <Filter>Source Files\GameLoop</Filter>
-    </ClCompile>
-    <ClCompile Include="EventHandler.cpp">
-      <Filter>Source Files\Engine\EventHandler</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
