@@ -10,7 +10,10 @@ int wmain()
 	Graphics::Init();
 
 	Graphics::NewWindow(UVector2(1600u, 900u), UVector2(1600u, 900u), false, "Graphics Engine");
+
 	Graphics::NewCamera();
+
+	Graphics::NewWindow(UVector2(200u, 200u), UVector2(200u, 200u));
 
 	GameLoop oGameLoop;
 

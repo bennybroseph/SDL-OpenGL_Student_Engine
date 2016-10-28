@@ -109,7 +109,7 @@ namespace Graphics
 			return;
 		}
 
-		m_SDLGLContext = SDL_GL_CreateContext(m_SDLWindow);
+		//m_SDLGLContext = SDL_GL_CreateContext(m_SDLWindow);
 	}
 	Window::~Window()
 	{
