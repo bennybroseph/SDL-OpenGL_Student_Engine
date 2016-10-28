@@ -48,6 +48,9 @@
     <ClInclude Include="include\Graphics.h">
       <Filter>Source Files\Engine\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="include\MasterHeader.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Graphics.cpp">
@@ -58,6 +61,9 @@
     </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Source Files\Engine\Graphics\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Engine\Graphics\Camera</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

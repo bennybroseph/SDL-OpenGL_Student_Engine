@@ -9,7 +9,7 @@ EventHandler::EventHandler()
 
 EventHandler::~EventHandler()
 {
-	// Pure virtual, do nothing 
+	// Pure virtual, do nothing
 }
 
 void EventHandler::OnEvent(const SDL_Event& event)

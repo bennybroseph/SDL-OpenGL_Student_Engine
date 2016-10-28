@@ -4,30 +4,27 @@
 
 void GameLoop::Loop()
 {
+	SDL_Event sdlEvent; // Will hold the next event to be parsed
+
 	while (m_bRunning)
 	{
-		SDL_Event sdlEvent; // Will hold the next event to be parsed
-
-		while (m_bRunning)
+		// Events get called one at a time, so if multiple things happen in one frame, they get parsed individually through 'SDL_PollEvent'
+		// The next event to parse gets stored into 'sdlEvent', and then passed to the 'EventHandler' class which will call it's appropriate function here
+		// 'SDL_PollEvent' returns 0 when there are no more events to parse
+		while (SDL_PollEvent(&sdlEvent))
 		{
-			// Events get called one at a time, so if multiple things happen in one frame, they get parsed individually through 'SDL_PollEvent'
-			// The next event to parse gets stored into 'sdlEvent', and then passed to the 'EventHandler' class which will call it's appropriate function here
-			// 'SDL_PollEvent' returns 0 when there are no more events to parse
-			while (SDL_PollEvent(&sdlEvent))
-			{
-				// Calls the redefined event function for the EventHandler class
-				// Refer to its header file and cpp for more information on what each inherited function is capable of
-				// and its syntax
-				OnEvent(sdlEvent);
-			}
-			Update();
-
-			LateUpdate();
-
-			Draw();
-
-			Graphics::Flip(); // Required to update the window with all the newly drawn content
+			// Calls the redefined event function for the EventHandler class
+			// Refer to its header file and cpp for more information on what each inherited function is capable of
+			// and its syntax
+			OnEvent(sdlEvent);
 		}
+		Update();
+
+		LateUpdate();
+
+		Draw();
+
+		Graphics::Flip(); // Required to update the window with all the newly drawn content
 	}
 }
 
@@ -57,12 +54,12 @@ void GameLoop::Draw()
 
 void GameLoop::OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)
 {
-	
+
 	switch (ac_sdlSym)
 	{
 	case SDLK_ESCAPE: m_bRunning = false; break; // End the loop
 
-	default: printf("%s\n",SDL_GetKeyName(ac_sdlSym)); break;
+	default: printf("%s\n", SDL_GetKeyName(ac_sdlSym)); break;
 	}
 }
 void GameLoop::OnKeyUp(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode)

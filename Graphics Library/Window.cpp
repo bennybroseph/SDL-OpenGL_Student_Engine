@@ -1,100 +1,115 @@
-#include "include\Window.h"
+#include "include/Window.h"
 
 
 
 namespace Graphics
 {
-	void Window::Resize(const System::Size2D<unsigned int>& ac_uiNewDimensions, const unsigned int ac_uiNewMonitorIndex)
+	bool Window::Resize(const UVector2 &newDimensions, unsigned int monitorIndex)
 	{
-		m_uiMonitorIndex = ac_uiNewMonitorIndex;
+		m_monitorIndex = monitorIndex;
 
-		m_uiDimensions.W = (m_bIsFullscreen) ? m_sdlDisplayMode[m_uiMonitorIndex].w : ac_uiNewDimensions.W;
-		m_uiDimensions.H = (m_bIsFullscreen) ? m_sdlDisplayMode[m_uiMonitorIndex].h : ac_uiNewDimensions.H;
+		m_dimensions->x = m_isFullscreen ? m_sdlDisplayMode[m_monitorIndex].w : newDimensions.x;
+		m_dimensions->y = m_isFullscreen ? m_sdlDisplayMode[m_monitorIndex].h : newDimensions.y;
 
-		m_uiNonFullscreen = ac_uiNewDimensions;
+		*m_windowedDimensions = newDimensions;
 
-		if(m_bIsFullscreen)
-			SDL_SetWindowFullscreen(m_sdlWindow, SDL_WINDOW_FULLSCREEN_DESKTOP*m_bIsFullscreen);
+		if (m_isFullscreen)
+			SDL_SetWindowFullscreen(m_sdlWindow, SDL_WINDOW_FULLSCREEN_DESKTOP * m_isFullscreen);
 		else
 		{
-			SDL_SetWindowFullscreen(m_sdlWindow, SDL_WINDOW_FULLSCREEN_DESKTOP*m_bIsFullscreen);
-			SDL_SetWindowSize(m_sdlWindow, m_uiNonFullscreen.W, m_uiNonFullscreen.H);
-			SDL_SetWindowPosition(m_sdlWindow, SDL_WINDOWPOS_CENTERED_DISPLAY(m_uiMonitorIndex), SDL_WINDOWPOS_CENTERED_DISPLAY(m_uiMonitorIndex));
+			SDL_SetWindowFullscreen(m_sdlWindow, SDL_WINDOW_FULLSCREEN_DESKTOP * m_isFullscreen);
+			SDL_SetWindowSize(m_sdlWindow, m_windowedDimensions->x, m_windowedDimensions->y);
+			SDL_SetWindowPosition(
+				m_sdlWindow,
+				SDL_WINDOWPOS_CENTERED_DISPLAY(m_monitorIndex),
+				SDL_WINDOWPOS_CENTERED_DISPLAY(m_monitorIndex));
 		}
+
+		return true;
 	}
-	void Window::Rename(const char* ac_szNewTitle)
+	bool Window::Rename(const char*newTitle)
 	{
-		m_sTitle = ac_szNewTitle;
-		SDL_SetWindowTitle(m_sdlWindow, m_sTitle.c_str());
+		m_title = newTitle;
+		SDL_SetWindowTitle(m_sdlWindow, m_title.c_str());
+
+		return true;
 	}
 
-	void Window::ToggleFullscreen()
+	bool Window::ToggleFullscreen()
 	{
-		m_bIsFullscreen = !m_bIsFullscreen;
-		Resize(m_uiNonFullscreen, m_uiMonitorIndex);
+		m_isFullscreen = !m_isFullscreen;
+		return Resize(*m_windowedDimensions, m_monitorIndex);
 	}
 
-	const System::Size2D<unsigned int>& Window::GetDimensions()
+	const UVector2 & Window::GetDimensions() const
 	{
-		return m_uiDimensions;
+		return *m_dimensions;
 	}
-	const System::Size2D<unsigned int>& Window::GetNonFullscreen()
+	const UVector2 & Window::GetWindowedDimensions() const
 	{
-		return m_uiNonFullscreen;
+		return *m_windowedDimensions;
+	}
+	const UVector2 & Window::GetResolution() const
+	{
+		return *m_resolution;
 	}
 
-	SDL_Window* Window::GetWindow()
+	SDL_Window * Window::GetWindow() const
 	{
 		return m_sdlWindow;
 	}
-
-	const System::Size2D<unsigned int>& Window::GetResolution()
+	const SDL_GLContext & Window::GetContext() const
 	{
-		return m_uiResolution;
+		return m_sdlGLContext;
 	}
 
-	const bool Window::GetIsFullscreen()
+	bool Window::GetIsFullscreen() const
 	{
-		return m_bIsFullscreen;
+		return m_isFullscreen;
 	}
 
-	void Window::Flip()
+	void Window::Flip() const
 	{
 		SDL_GL_SwapWindow(m_sdlWindow);
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
 
 	Window::Window(
-		const System::Size2D<unsigned int>& ac_uiResolution,
-		const bool							ac_bFullscreen,
-		const System::Size2D<unsigned int>& ac_uiDimensions,
-		const char*							ac_szTitle,
-		const unsigned int					ac_uiMonitorIndex,
-		const std::vector<SDL_DisplayMode>&	ac_sdlDisplayMode) : m_sdlDisplayMode(ac_sdlDisplayMode)
+		const UVector2 &				resolution,
+		const bool						isFullscreen,
+		const UVector2 &				dimensions,
+		const char *					title,
+		const unsigned int				monitorIndex,
+		const List<SDL_DisplayMode> &	displayMode) : m_sdlDisplayMode(displayMode)
 	{
-		m_uiMonitorIndex = ac_uiMonitorIndex;
+		m_monitorIndex = monitorIndex;
 
-		m_uiDimensions.W = (ac_bFullscreen) ? m_sdlDisplayMode[m_uiMonitorIndex].w : ac_uiDimensions.W;
-		m_uiDimensions.H = (ac_bFullscreen) ? m_sdlDisplayMode[m_uiMonitorIndex].h : ac_uiDimensions.H;
+		m_dimensions->x = (isFullscreen) ? m_sdlDisplayMode[m_monitorIndex].w : dimensions.x;
+		m_dimensions->y = (isFullscreen) ? m_sdlDisplayMode[m_monitorIndex].h : dimensions.y;
 
-		m_uiNonFullscreen = ac_uiDimensions;
+		*m_windowedDimensions = dimensions;
 
-		m_uiResolution = ac_uiResolution;
+		*m_resolution = resolution;
 
-		m_sTitle = ac_szTitle;
+		m_title = title;
 
-		m_bIsFullscreen = ac_bFullscreen;
+		m_isFullscreen = isFullscreen;
 
 		m_sdlWindow = SDL_CreateWindow(
-			m_sTitle.c_str(),
-			SDL_WINDOWPOS_CENTERED_DISPLAY(m_uiMonitorIndex),
-			SDL_WINDOWPOS_CENTERED_DISPLAY(m_uiMonitorIndex),
-			m_uiNonFullscreen.W,
-			m_uiNonFullscreen.H,
-			SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP*m_bIsFullscreen | SDL_WINDOW_OPENGL);
+			m_title.c_str(),
+			SDL_WINDOWPOS_CENTERED_DISPLAY(m_monitorIndex),
+			SDL_WINDOWPOS_CENTERED_DISPLAY(m_monitorIndex),
+			m_windowedDimensions->x,
+			m_windowedDimensions->y,
+			SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP * m_isFullscreen | SDL_WINDOW_OPENGL);
 
 		if (m_sdlWindow == nullptr)
+		{
 			printf("SDL_Error: %s\n", SDL_GetError());
+			return;
+		}
+
+		m_sdlGLContext = SDL_GL_CreateContext(m_sdlWindow);
 	}
 	Window::~Window()
 	{
