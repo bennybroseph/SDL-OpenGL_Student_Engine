@@ -4,9 +4,9 @@
 
 namespace Graphics
 {
-	void Camera::Resize(const Vector2 &ac_NewDimensions)
+	void Camera::Resize(const Vector2 &newDimensions)
 	{
-		m_Dimensions = ac_NewDimensions;
+		m_Dimensions = newDimensions;
 	}
 	void Camera::RePosition(const Vector2 &ac_NewScreenPos)
 	{
@@ -19,72 +19,72 @@ namespace Graphics
 
 	void Camera::Update()
 	{
-		if (m_bIsScrolling)
+		if (m_IsScrolling)
 			m_WorldPos += m_Velocity;
 	}
 
-	const Vector2 & Camera::GetScreenPos()
+	const Vector2 & Camera::GetScreenPos() const
 	{
 		return m_ScreenPos;
 	}
-	const Vector2 & Camera::GetWorldPos()
+	const Vector2 & Camera::GetWorldPos() const
 	{
 		return m_WorldPos + *m_RelativePos;
 	}
-	const Vector2 & Camera::GetDimensions()
+	const Vector2 & Camera::GetDimensions() const
 	{
 		return m_Dimensions;
 	}
-	const Vector2 & Camera::GetResolution()
+	const Vector2 & Camera::GetResolution() const
 	{
 		return m_Resolution;
 	}
-	const Vector2 & Camera::GetZoom()
+	const Vector2 & Camera::GetZoom() const
 	{
 		return m_Zoom;
 	}
-	float Camera::GetRotation()
+	float Camera::GetRotation() const
 	{
 		return m_Rotation;
 	}
-	unsigned int Camera::GetWindowIndex()
+	unsigned int Camera::GetWindowIndex() const
 	{
-		return m_uiWindowIndex;
+		return m_WindowIndex;
 	}
-	unsigned int Camera::GetWorldSpace()
+	unsigned int Camera::GetWorldSpace() const
 	{
-		return m_uiWorldSpace;
+		return m_WorldSpace;
 	}
 
 	Camera::Camera(
-		const Vector2 &	ac_ScreenPos,
-		const Vector2 &	ac_WorldPos,
-		const Vector2 &	ac_RelativePos,
-		const Vector2 &	ac_Dimension,
-		const Vector2 &	ac_Resolution,
-		const Vector2 &	ac_Zoom,
-		float			ac_Rotation,
-		bool			ac_bIsScrolling,
-		const Vector2 &	ac_Velocity,
-		unsigned int	ac_uiWindowIndex,
-		unsigned int	ac_uiWorldSpace)
+		const Vector2 &	screenPosition,
+		const Vector2 &	worldPosition,
+		const Vector2 &	relativePosition,
+		const Vector2 &	size,
+		const Vector2 &	resolution,
+		const Vector2 &	zoom,
+		float			rotation,
+		bool			isScrolling,
+		const Vector2 &	velocity,
+		unsigned 		windowIndex,
+		unsigned 		worldSpace)
 	{
-		m_ScreenPos =	 ac_ScreenPos;
-		m_WorldPos =	 ac_WorldPos;
-		m_RelativePos = &ac_RelativePos;
+		m_ScreenPos =	 screenPosition;
+		m_WorldPos =	 worldPosition;
+		m_RelativePos = &relativePosition;
 
-		m_Dimensions = ac_Dimension;
-		m_Resolution = ac_Resolution;
+		m_Dimensions = size;
+		m_Resolution = resolution;
 
-		m_Zoom =	 ac_Zoom;
-		m_Rotation = ac_Rotation;
+		m_Zoom =	 zoom;
+		m_Rotation = rotation;
 
-		m_bIsScrolling = ac_bIsScrolling;
+		m_IsScrolling = isScrolling;
 
-		m_Velocity = ac_Velocity;
+		m_Velocity = velocity;
 
-		m_uiWindowIndex = ac_uiWindowIndex;
-		m_uiWorldSpace =  ac_uiWorldSpace;
+		m_WindowIndex = windowIndex;
+		m_WorldSpace =  worldSpace;
 	}
 	Camera::~Camera()
 	{

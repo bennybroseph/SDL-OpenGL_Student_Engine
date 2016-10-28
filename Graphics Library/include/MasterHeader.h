@@ -89,7 +89,7 @@ __if_exists(glm::vec2)
 	using Vector4 = glm::vec4;
 
 //#include <memory>
-#ifdef _MEMORY_
+	#ifdef _MEMORY_
 
 	typedef unique_ptr<Vector2> Vector2PtrU;
 	typedef shared_ptr<Vector2> Vector2PtrS;
@@ -103,7 +103,7 @@ __if_exists(glm::vec2)
 	typedef shared_ptr<Vector4> Vector4PtrS;
 	typedef weak_ptr<Vector4> Vector4PtrW;
 
-#endif
+	#endif
 }
 
 //#include <glm/detail/type_vec.hpp>
@@ -114,7 +114,7 @@ __if_exists(glm::vec2)
 	using UVector4 = glm::uvec4;
 
 	//#include <memory>
-#ifdef _MEMORY_
+	#ifdef _MEMORY_
 
 	typedef unique_ptr<UVector2> UVector2PtrU;
 	typedef shared_ptr<UVector2> UVector2PtrS;
@@ -128,7 +128,7 @@ __if_exists(glm::vec2)
 	typedef shared_ptr<UVector4> UVector4PtrS;
 	typedef weak_ptr<UVector4> UVector4PtrW;
 
-#endif
+	#endif
 }
 
 //#include <glm/detail/type_mat4x4.hpp>
@@ -137,13 +137,13 @@ __if_exists(glm::mat4)
 	using Matrix4x4 = glm::mat4x4;
 
 	//#include <memory>
-#ifdef _MEMORY_
+	#ifdef _MEMORY_
 
 	typedef unique_ptr<Matrix4x4> Matrix4x4PtrU;
 	typedef shared_ptr<Matrix4x4> Matrix4x4PtrS;
 	typedef weak_ptr<Matrix4x4> Matrix4x4PtrW;
 
-#endif
+	#endif
 }
 
 

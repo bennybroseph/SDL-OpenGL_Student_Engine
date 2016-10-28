@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\EventHandler.h" />
+    <ClInclude Include="include\GLSurface.h" />
     <ClInclude Include="include\Graphics.h" />
     <ClInclude Include="include\MasterHeader.h" />
     <ClInclude Include="include\System.h" />

@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Engine\Graphics\Window">
       <UniqueIdentifier>{31b60e14-8a0e-45e6-98ae-cff5143640d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\Graphics\GLSurface">
+      <UniqueIdentifier>{2baab334-617f-4270-939e-da33eb524e06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\System.h">
@@ -50,6 +53,9 @@
     </ClInclude>
     <ClInclude Include="include\MasterHeader.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GLSurface.h">
+      <Filter>Source Files\Engine\Graphics\GLSurface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

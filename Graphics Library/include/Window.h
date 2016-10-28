@@ -22,7 +22,7 @@ namespace Graphics
 	{
 	public:
 
-		bool Resize(const UVector2 &newDimensions, unsigned int monitorIndex);
+		bool Resize(const UVector2 &newDimensions, unsigned monitorIndex);
 		bool Rename(const char *newTitle);
 
 		bool ToggleFullscreen();
@@ -41,34 +41,34 @@ namespace Graphics
 		// This is the only usable constructor
 		Window(
 			const UVector2 &				resolution,		// The window's internal resolution
-			const bool						isFullscreen,	// Whether or not the window should be full screen on creation
+			bool							isFullscreen,	// Whether or not the window should be full screen on creation
 			const UVector2 &				dimensions,		// The window's width and height
 			const char *					title,			// The window's title
-			const unsigned int				monitorIndex,	// Which monitor the window should be created on
-			const List<SDL_DisplayMode> &	displayMode);	// A reference to all the current displays dimensions and specifications
+			unsigned						monitorIndex,	// Which monitor the window should be created on
+			const List<SDL_DisplayMode> &	displayModes);	// A reference to all the current displays dimensions and specifications
 		// The default constructor does not exist on purpose
 		Window() = delete; // Make sure the default constructor cannot be called
 		~Window();
 
 	private:
 
-		SDL_Window *m_sdlWindow;
-		SDL_GLContext m_sdlGLContext;
+		SDL_Window *m_SDLWindow;
+		SDL_GLContext m_SDLGLContext;
 
-		const List<SDL_DisplayMode> &m_sdlDisplayMode;
+		const List<SDL_DisplayMode> &m_SDLDisplayModes;
 
-		UVector2PtrU m_dimensions			= make_unique<UVector2>();
-		UVector2PtrU m_windowedDimensions	= make_unique<UVector2>();
-		UVector2PtrU m_resolution			= make_unique<UVector2>();
+		UVector2PtrU m_Dimensions			= make_unique<UVector2>();
+		UVector2PtrU m_WindowedDimensions	= make_unique<UVector2>();
+		UVector2PtrU m_Resolution			= make_unique<UVector2>();
 
-		UVector2PtrU m_viewport		= make_unique<UVector2>();
-		UVector2PtrU m_viewOffset	= make_unique<UVector2>();
+		UVector2PtrU m_Viewport		= make_unique<UVector2>();
+		UVector2PtrU m_ViewOffset	= make_unique<UVector2>();
 
-		string m_title;
+		string m_Title;
 
-		bool m_isFullscreen;
+		bool m_IsFullscreen;
 
-		unsigned int m_monitorIndex;
+		unsigned m_MonitorIndex;
 
 	};
 }

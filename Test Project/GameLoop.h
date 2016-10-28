@@ -36,11 +36,11 @@ public:
 	void Draw();
 
 	// Gets called automatically by 'EventHandler' when a key is pressed
-	void OnKeyDown(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode);
+	void OnKeyDown(SDL_Keycode symbol, Uint16 modifier, SDL_Scancode sdlScancode) override;
 	// Gets called automatically by 'EventHandler' when a key is released
-	void OnKeyUp(const SDL_Keycode ac_sdlSym, const Uint16 ac_uiMod, const SDL_Scancode ac_sdlScancode);
+	void OnKeyUp(SDL_Keycode symbol, Uint16 modifier, SDL_Scancode sdlScancode) override;
 	// Gets called automatically by 'EventHandler' when the user clicks the 'x' on the window
-	void OnExit();
+	void OnExit() override;
 
 	// The default constructor
 	GameLoop();
@@ -49,7 +49,7 @@ public:
 
 private:
 
-	bool m_bRunning; // If this is true, the game loop will continue to run
+	bool m_Running; // If this is true, the game loop will continue to run
 
 };
 

@@ -18,33 +18,34 @@ namespace Graphics
 	{
 
 	public:
-		void Resize(const Vector2&  ac_NewDimensions);
-		void RePosition(const Vector2& ac_ScreenPos);
-		void ReBind(const Vector2& ac_NewRelativePos);
+
+		void Resize(const Vector2 &newDimensions);
+		void RePosition(const Vector2 &screenPosition);
+		void ReBind(const Vector2 &newRelativePosition);
 
 		void Update();
 
-		const Vector2 & GetScreenPos();
-		const Vector2 & GetWorldPos();
-		const Vector2 & GetDimensions();
-		const Vector2 & GetResolution();
-		const Vector2 & GetZoom();
-		float GetRotation();
-		unsigned int GetWindowIndex();
-		unsigned int GetWorldSpace();
+		const Vector2 & GetScreenPos() const;
+		const Vector2 & GetWorldPos() const;
+		const Vector2 & GetDimensions() const;
+		const Vector2 & GetResolution() const;
+		const Vector2 & GetZoom() const;
+		float GetRotation() const;
+		unsigned int GetWindowIndex() const;
+		unsigned int GetWorldSpace() const;
 
 		Camera(
-			const Vector2 &	ac_ScreenPos,
-			const Vector2 &	ac_WorldPos,
-			const Vector2 &	ac_RelativePos,
-			const Vector2 &	ac_Dimension,
-			const Vector2 &	ac_Resolution,
-			const Vector2 &	ac_Zoom,
-			float			ac_Rotation,
-			bool			ac_bIsScrolling,
-			const Vector2 &	ac_Velocity,
-			unsigned int	ac_uiWindowIndex,
-			unsigned int	ac_uiWorldSpace);
+			const Vector2 &	screenPosition,
+			const Vector2 &	worldPosition,
+			const Vector2 &	relativePosition,
+			const Vector2 &	size,
+			const Vector2 &	resolution,
+			const Vector2 &	zoom,
+			float			rotation,
+			bool			isScrolling,
+			const Vector2 &	velocity,
+			unsigned		windowIndex,
+			unsigned		worldSpace);
 		Camera() = delete;
 		~Camera();
 
@@ -60,12 +61,13 @@ namespace Graphics
 		Vector2 m_Zoom;
 		float m_Rotation;
 
-		bool m_bIsScrolling;
+		bool m_IsScrolling;
 
 		Vector2 m_Velocity;
 
-		unsigned int m_uiWindowIndex;
-		unsigned int m_uiWorldSpace;
+		unsigned int m_WindowIndex;
+		unsigned int m_WorldSpace;
+
 	};
 }
 
