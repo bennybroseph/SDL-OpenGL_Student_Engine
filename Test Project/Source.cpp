@@ -13,11 +13,9 @@ int wmain()
 
 	Graphics::NewCamera();
 
-	Graphics::NewWindow(UVector2(200u, 200u), UVector2(200u, 200u));
+	GameLoop gameLoop;
 
-	GameLoop oGameLoop;
-
-	oGameLoop.Loop();
+	gameLoop.Run();
 
 	Graphics::Quit();
 

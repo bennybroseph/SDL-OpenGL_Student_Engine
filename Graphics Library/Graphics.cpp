@@ -321,7 +321,8 @@ namespace Graphics
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-		glTexImage2D(GL_TEXTURE_2D, 0, mode, sdlSurface.w, sdlSurface.h, 0, mode, GL_UNSIGNED_BYTE, sdlSurface.pixels);
+		glTexImage2D(
+			GL_TEXTURE_2D, 0, mode, sdlSurface.w, sdlSurface.h, 0, mode, GL_UNSIGNED_BYTE, sdlSurface.pixels);
 
 		glSurface->position ={ NULL, NULL };
 		glSurface->offsetPosition ={ NULL, NULL };
@@ -366,26 +367,28 @@ namespace Graphics
 		cameras.push_back(camera);
 	}
 
-	void DrawRect(const Vector2 &position, const Vector2 &size, const Vector4 &colour)
+	void DrawRect(const Vector2 &start, const Vector2 &end, const Vector4 &colour)
 	{
 		glPushMatrix(); // Save the current matrix.
 
 		glBindTexture(GL_TEXTURE_2D, NULL);
 
+		auto size = Vector2(end.x - start.x, end.y - start.y);
+
 		glColor4ub(colour.r, colour.g, colour.b, colour.a);
 		glBegin(GL_QUADS);
 		{
 			//Bottom-left vertex (corner)
-			glVertex3f(position.x, position.y, 0.0f); //Vertex Coords
+			glVertex3f(start.x, start.y, 0.0f); //Vertex Coords
 
 			//Bottom-right vertex (corner)
-			glVertex3f(position.x + size.x, position.y, 0.f);
+			glVertex3f(start.x + size.x, start.y, 0.f);
 
 			//Top-right vertex (corner)
-			glVertex3f(position.x + size.x, position.y + size.y, 0.f);
+			glVertex3f(start.x + size.x, start.y + size.y, 0.f);
 
 			//Top-left vertex (corner)
-			glVertex3f(position.x, position.y + size.y, 0.f);
+			glVertex3f(start.x, start.y + size.y, 0.f);
 		}
 		glEnd();
 
@@ -408,13 +411,13 @@ namespace Graphics
 
 		glPopMatrix(); // Reset the current matrix to the one that was saved.
 	}
-	void DrawPoint(const Vector2& position, const Vector4 &ac_Color)
+	void DrawPoint(const Vector2& position, const Vector4 &colour)
 	{
 		glPushMatrix(); // Save the current matrix.
 
 		glBindTexture(GL_TEXTURE_2D, NULL);
 
-		glColor4ub(ac_Color.r, ac_Color.g, ac_Color.b, ac_Color.a);
+		glColor4ub(colour.r, colour.g, colour.b, colour.a);
 
 		glBegin(GL_POINTS);
 		glVertex2f(position.x, position.y);
